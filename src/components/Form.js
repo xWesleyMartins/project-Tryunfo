@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './Form.css';
 
 export default class Form extends Component {
   render() {
@@ -18,7 +19,7 @@ export default class Form extends Component {
       onSaveButtonClick,
     } = this.props;
     return (
-      <form>
+      <form className="form">
         Form
         <label htmlFor="name-input">
           <input
