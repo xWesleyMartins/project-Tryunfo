@@ -23,6 +23,7 @@ export default class Form extends Component {
         Form
         <label htmlFor="name-input">
           <input
+            name="cardName"
             type="text"
             data-testid="name-input"
             value={ cardName }
@@ -31,6 +32,7 @@ export default class Form extends Component {
         </label>
         <label htmlFor="description-input">
           <input
+            name="cardDescription"
             type="textarea"
             data-testid="description-input"
             value={ cardDescription }
@@ -38,24 +40,28 @@ export default class Form extends Component {
           />
         </label>
         <input
+          name="cardAttr1"
           type="number"
           data-testid="attr1-input"
           value={ cardAttr1 }
           onChange={ onInputChange }
         />
         <input
+          name="cardAttr2"
           type="number"
           data-testid="attr2-input"
           value={ cardAttr2 }
           onChange={ onInputChange }
         />
         <input
+          name="cardAttr3"
           type="number"
           data-testid="attr3-input"
           value={ cardAttr3 }
           onChange={ onInputChange }
         />
         <input
+          name="cardImage"
           type="text"
           data-testid="image-input"
           value={ cardImage }
@@ -63,8 +69,8 @@ export default class Form extends Component {
         />
         <label htmlFor="Super-Trunfo">
           <select
+            name="cardRare"
             data-testid="rare-input"
-            name="Super-Trunfo"
             value={ cardRare }
             onChange={ onInputChange }
           >
@@ -74,6 +80,7 @@ export default class Form extends Component {
           </select>
         </label>
         <input
+          name="cardTrunfo"
           type="checkbox"
           data-testid="trunfo-input"
           checked={ cardTrunfo }
