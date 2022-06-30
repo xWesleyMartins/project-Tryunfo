@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Form from './Form';
 import './Card.css';
 
 class Card extends React.Component {
@@ -18,7 +17,12 @@ class Card extends React.Component {
     return (
       <div className="card">
         <h3 data-testid="name-card">{ cardName }</h3>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <img
+          src={ cardImage }
+          alt={ cardName }
+          data-testid="image-card"
+          className="cardImage"
+        />
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card">{ cardAttr1 }</p>
         <p data-testid="attr2-card">{ cardAttr2 }</p>
