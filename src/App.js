@@ -32,7 +32,6 @@ class App extends React.Component {
   }
 
   onSaveButtonClick = () => {
-    console.log('opa');
     const { isSaveButtonDisabled, savedCards, ...newSavedCards } = this.state;
     if (newSavedCards.cardTrunfo) {
       this.setState({ hasTrunfo: true });
@@ -48,6 +47,7 @@ class App extends React.Component {
         cardAttr3: '0',
         cardImage: '',
         cardTrunfo: false,
+
       }
     ));
   }
@@ -95,6 +95,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      savedCards,
     } = this.state;
     return (
       <div className="body">
@@ -124,6 +125,23 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {
+          savedCards
+            .map((card, i) => (
+              <Card
+                key={ i }
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+            ))
+        }
+
       </div>
     );
   }
