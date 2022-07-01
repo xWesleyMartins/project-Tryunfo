@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      savedCards: [],
     };
     this.onInputChange = this.onInputChange.bind(this);
   }
@@ -32,6 +33,23 @@ class App extends React.Component {
 
   onSaveButtonClick = () => {
     console.log('opa');
+    const { isSaveButtonDisabled, savedCards, ...newSavedCards } = this.state;
+    if (newSavedCards.cardTrunfo) {
+      this.setState({ hasTrunfo: true });
+    }
+    this.setState((prevState) => (
+      {
+        savedCards: [...prevState.savedCards, newSavedCards],
+        cardName: '',
+        cardDescription: '',
+        cardRare: 'normal',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardTrunfo: false,
+      }
+    ));
   }
 
   validateFormButton = () => {
@@ -82,6 +100,7 @@ class App extends React.Component {
       <div className="body">
         <h1>Tryunfo</h1>
         <Form
+          // passarValorParaOPai={ this.recebeValorDoFilho }
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
@@ -94,7 +113,6 @@ class App extends React.Component {
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
           onInputChange={ this.onInputChange }
-          validateFormButton={ this.validateFormButton }
         />
         <Card
           cardName={ cardName }

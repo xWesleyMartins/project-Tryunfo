@@ -3,6 +3,26 @@ import PropTypes from 'prop-types';
 import './Form.css';
 
 export default class Form extends Component {
+  // validateSuperTrunfo = () => {
+  //   const { hasTrunfo, cardTrunfo, onInputChange } = this.props;
+  //   if (!hasTrunfo) {
+  //     return (
+  //       <label htmlFor="cardTrunfo">
+  //         <input
+  //           name="cardTrunfo"
+  //           type="checkbox"
+  //           data-testid="trunfo-input"
+  //           checked={ cardTrunfo }
+  //           onChange={ onInputChange }
+  //         />
+  //         {' '}
+  //         Super Trunfo
+  //       </label>
+  //     );
+  //   }
+  //   return <p>Você já tem um Super Trunfo em seu baralho</p>;
+  // };
+
   render() {
     const {
       cardName,
@@ -13,7 +33,7 @@ export default class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -39,27 +59,31 @@ export default class Form extends Component {
             onChange={ onInputChange }
           />
         </label>
-        <input
-          name="cardAttr1"
-          type="number"
-          data-testid="attr1-input"
-          value={ cardAttr1 }
-          onChange={ onInputChange }
-        />
-        <input
-          name="cardAttr2"
-          type="number"
-          data-testid="attr2-input"
-          value={ cardAttr2 }
-          onChange={ onInputChange }
-        />
-        <input
-          name="cardAttr3"
-          type="number"
-          data-testid="attr3-input"
-          value={ cardAttr3 }
-          onChange={ onInputChange }
-        />
+        <label htmlFor="cardAttr">
+          <input
+            name="cardAttr1"
+            type="number"
+            data-testid="attr1-input"
+            value={ cardAttr1 }
+            onChange={ onInputChange }
+          />
+
+          <input
+            name="cardAttr2"
+            type="number"
+            data-testid="attr2-input"
+            value={ cardAttr2 }
+            onChange={ onInputChange }
+          />
+
+          <input
+            name="cardAttr3"
+            type="number"
+            data-testid="attr3-input"
+            value={ cardAttr3 }
+            onChange={ onInputChange }
+          />
+        </label>
         <input
           name="cardImage"
           type="text"
@@ -79,13 +103,19 @@ export default class Form extends Component {
             <option value="muito raro">muito raro</option>
           </select>
         </label>
-        <input
-          name="cardTrunfo"
-          type="checkbox"
-          data-testid="trunfo-input"
-          checked={ cardTrunfo }
-          onChange={ onInputChange }
-        />
+        { !hasTrunfo
+          ? (
+            <label htmlFor="cardTrunfo">
+              <input
+                name="cardTrunfo"
+                type="checkbox"
+                data-testid="trunfo-input"
+                checked={ cardTrunfo }
+                onChange={ onInputChange }
+                hidden={ hasTrunfo }
+              />
+            </label>)
+          : <p>Você já tem um Super Trunfo em seu baralho</p> }
         <button
           type="button"
           data-testid="save-button"
@@ -107,7 +137,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
